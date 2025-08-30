@@ -11,9 +11,10 @@
 </head>
 
 <body>
+    {{-- Wrap Layar --}}
     <div class="flex flex-col lg:flex-row min-h-screen bg-gray-100">
 
-        <!-- Sisi Kiri (Login) -->
+        <!-- Sisi Kiri (Register) -->
         <div class="flex flex-col justify-center items-center w-full lg:w-1/2 p-6 gap-5">
             <h1 class="text-center text-2xl font-bold">Welcome to Magnolia <br> Kebaya and Batik</h1>
             <div class="bg-white rounded-xl border border-gray-200 px-6 lg:px-12 py-13 w-full max-w-md shadow">
@@ -33,7 +34,7 @@
                             class="w-full px-3 py-1 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
                    outline-none transition duration-200"
-                            required>
+                            >
                     </div>
 
                     <div>
@@ -42,7 +43,7 @@
                             class="w-full px-3 py-1 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
                    outline-none transition duration-200"
-                            required>
+                            >
                     </div>
 
                     <div>
@@ -51,7 +52,7 @@
                             class="w-full px-3 py-1 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
                    outline-none transition duration-200"
-                            required>
+                            >
                     </div>
 
                     <div>
@@ -60,7 +61,7 @@
                             class="w-full px-3 py-1 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
                    outline-none transition duration-200"
-                            required>
+                            >
                     </div>
 
                     <div>
@@ -69,12 +70,12 @@
                             class="w-full px-3 py-1 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
                    outline-none transition duration-200"
-                            required>
+                            >
                     </div>
 
-                    <button
-                        class="cursor-pointer hover:scale-[1.01] px-5 py-2 rounded-lg font-semibold hover:text-[#36A4A9] hover:bg-white border-2 border-[#36A4A9] transition text-white bg-gradient-to-r bg-[#36A4A9] focus:outline-none focus:ring-4 focus:ring-[#36A4A944]">
-                        Masuk </button>
+                    <a href="/"><button
+                            class="cursor-pointer hover:scale-[1.01] px-5 py-2 rounded-lg font-semibold hover:text-[#36A4A9] hover:bg-white border-2 border-[#36A4A9] transition text-white bg-gradient-to-r bg-[#36A4A9] focus:outline-none focus:ring-4 focus:ring-[#36A4A944]">
+                            Masuk </button></a>
                 </form>
             </div>
         </div>
