@@ -22,3 +22,11 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('pages.about');
 });
+
+Route::get('/find-your-style', function () {
+    return view('pages.find-your-style');
+});
+
+Route::get('/profile', function() {
+    return view('pages.profile-user');
+});

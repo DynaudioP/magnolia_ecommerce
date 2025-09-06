@@ -1,176 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-    <title>Magnolia | Home</title>
-</head>
-
-<body>
-    {{-- Wrap Halaman --}}
-    <div class="min-h-screen bg-gradient-to-r from-[#25777a] to-[#164345]
-">
-        {{-- Navigasi Bar --}}
-        <nav class="flex justify-between items-center mx-auto py-2 px-12 shadow-sm">
-            <div>
-                <img class="w-32 cursor-pointer" src="{{ asset('assets/images/logo.png') }}" alt="...">
-            </div>
-            <div>
-                <ul>
-                    <li class="flex space-x-7">
-                        <a href="/about"
-                            class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
-                            About Us
-                        </a>
-                        <a href="#"
-                            class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
-                            Katalog
-                        </a>
-                        <a href="#"
-                            class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
-                            Find Your Style
-                        </a>
-                        <a href="#"
-                            class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
-                            Keranjang
-                        </a>
-                        <a href="#"
-                            class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
-                            Pesanan
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="px-5 py-2 bg-white mr-3 rounded-xl">
-                <a href="/login" class="font-semibold text-[#36A4A9]">Masuk</a>
-            </div>
-        </nav>
-
-        {{-- Home Header --}}
-        <header>
-            <div class="flex justify-center items-center h-[600px] ">
-                <div class="w-1/2 space-y-1 px-8">
-                    <p class="text-gray-200 text-2xl font-semibold">Selamat Datang</p>
-                    <h1 class="text-4xl text-white font-bold leading-tight">
-                        Temukan Gaya Baru<br>
-                        <span
-                            class="bg-gradient-to-r from-[#f9d423] via-[#f6ae2d] to-[#d4af37] bg-clip-text text-transparent">Untuk
-                            keseharianmu!</span>
-                    </h1>
-                    <p class="text-gray-200 text-lg mb-7">Koleksi pakaian nyaman dan stylish, cocok untuk aktivitas
-                        apapun.</p>
-                    <button
-                        class="px-6 py-2 rounded-lg font-semibold text-white 
+<x-layouts.user title="Home">
+    <header>
+        <div class="flex justify-center items-center h-[600px] ">
+            <div class="space-y-1 px-8">
+                <p class="text-gray-200 text-2xl font-semibold">Selamat Datang</p>
+                <h1 class="text-4xl  text-white font-bold leading-tight">
+                    Temukan Gaya Baru<br>
+                    <span
+                        class="bg-gradient-to-r from-[#f9d423] via-[#f6ae2d] to-[#d4af37] bg-clip-text text-transparent">Untuk
+                        keseharianmu!</span>
+                </h1>
+                <p class="text-gray-200 text-lg mb-7">Koleksi pakaian nyaman dan stylish, cocok untuk aktivitas
+                    apapun.</p>
+                <button
+                    class="px-6 py-2 hover:scale-103 cursor-pointer transition rounded-lg font-semibold text-white 
   bg-gradient-to-r from-[#f9d423] via-[#f6ae2d] to-[#d4af37] shadow-md">
-                        Belanja Sekarang
-                    </button>
-                </div>
-                <div class="w-1/4 h-full">
-                    <img class="h-full object-cover" src="{{ asset('assets/images/header.png') }}" alt="">
-                </div>
+                    Belanja Sekarang
+                </button>
             </div>
-        </header>
+            <div class=" h-full hidden lg:flex justify-center items-end">
+                <img class="h-135 w-164 object-fit" src="{{ asset('assets/images/headers.png') }}" alt="">
+            </div>
+        </div>
+    </header>
 
-        {{-- Section Home --}}
-        <section class="px-4 lg:px-32 bg-white py-7">
-            <div class="px-8 py-5 bg-white rounded-2xl">
-                <h3 class="font-bold text-4xl text-center">Rekomendasi Produk</h3>
-                <h5 class="text-md text-gray-500 text-center">Temukan Koleksi Kain Sesuai Seleramu!</h5>
-                <div class="flex justify-center mt-4">
-                    <img class="w-1/4 scale-x-250" src="{{ asset('assets/images/section-line.png') }}" alt="">
-                </div>
-                <div class="flex flex-row flex-wrap mt-8 gap-3 justify-start lg:justify-center">
+    {{-- Section Pilihan --}}
+    <section class="mx-auto py-16 bg-gray-50">
+        <div class="flex justify-center flex-col">
+            <h3 class="text-4xl mb-2 text-center font-bold">Featured Categories</h3>
+            <h5 class="text-md text-gray-500 text-center">Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry.</h5>
+        </div>
 
-                    <div class="card bg-white rounded-xl border border-gray-200 shadow rounded-md">
-                        <div class="w-72  rounded-t-lg">
-                            <img class="rounded-t-lg" src="{{ asset('assets/images/catalog1.jpg') }}" alt="">
-                        </div>
-                        <div class="p-3">
-                            <h5 class="mb-2 text-sm text-gray-400">Batik</h5>
-                            <h3 class="font-bold text-lg mb-0.5 font-serif">Kain Batik Khas Solo</h3>
-
-                            <h3 class="font-bold font-serif text-md mb-1">Rp. 200.000,-</h3>
-                        </div>
+        <div class="grid-wrap px-2 lg:px-32 mt-20">
+            <div class="px-2 lg:px-8 grid grid-cols-1 sm:grid-cols-2 mx-auto gap-20 sm:gap-6 ">
+                <div class="bg-[#e6eef0] rounded-lg flex justify-between hover:scale-102 transition cursor-pointer">
+                    <div class="px-4 sm:px-10 py-4 sm:py-8">
+                        <h3 class="font-bold text-2xl mb-1">Batik</h3>
+                        <h5 class="font-serif">Lihat Produk ></h5>
                     </div>
-                    <div class="card bg-white rounded-xl border border-gray-200 shadow rounded-md">
-                        <div class="w-72  rounded-t-lg">
-                            <img class="rounded-t-lg" src="{{ asset('assets/images/catalog1.jpg') }}" alt="">
-                        </div>
-                        <div class="p-3">
-                            <h5 class="mb-2 text-sm text-gray-400">Batik</h5>
-                            <h3 class="font-bold text-lg mb-0.5 font-serif">Kain Batik Khas Solo</h3>
-
-                            <h3 class="font-bold font-serif text-md mb-1">Rp. 200.000,-</h3>
-                        </div>
-                    </div>
-                    <div class="card bg-white rounded-xl border border-gray-200 shadow rounded-md">
-                        <div class="w-72  rounded-t-lg">
-                            <img class="rounded-t-lg" src="{{ asset('assets/images/catalog1.jpg') }}" alt="">
-                        </div>
-                        <div class="p-3">
-                            <h5 class="mb-2 text-sm text-gray-400">Batik</h5>
-                            <h3 class="font-bold text-lg mb-0.5 font-serif">Kain Batik Khas Solo</h3>
-
-                            <h3 class="font-bold font-serif text-md mb-1">Rp. 200.000,-</h3>
-                        </div>
+                    <div class="relative h-72 sm:h-86 overflow-visible">
+                        <img src="{{ asset('assets/images/home-category1.png') }}" alt="Product"
+                            class="w-auto h-[115%] object-cover -mt-11 sm:-mt-13">
                     </div>
                 </div>
+
+                <div
+                    class="bg-[#f0f1eb] rounded-lg flex flex-row-reverse sm:flex-row justify-between hover:scale-102 transition cursor-pointer">
+                    <div class="px-4 sm:px-10 py-4 sm:py-8">
+                        <h3 class="font-bold text-2xl mb-1">Kebaya</h3>
+                        <h5 class="font-serif">Lihat Produk ></h5>
+                    </div>
+                    <div class="relative h-72 sm:h-86 overflow-visible">
+                        <img src="{{ asset('assets/images/home-category2.png') }}" alt="Product"
+                            class="w-auto h-[115%] object-cover -mt-11 sm:-mt-13">
+                    </div>
+                </div>
+
             </div>
-        </section>
+        </div>
 
-        {{-- Footer --}}
-        <footer class="text-white py-7">
-            <div class="container mx-auto flex flex-col items-center space-y-6">
-                {{-- Link Sosial Media --}}
-                <div class="flex space-x-6">
-                    <a href="#"
-                        class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-600">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-600">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-600">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-600">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-600">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-                {{-- Navigasi Footer --}}
-                <div class="flex space-x-8 text-gray-300">
-                    <a href="#" class="hover:text-white">Home</a>
-                    <a href="#" class="hover:text-white">Catalog</a>
-                    <a href="#" class="hover:text-white">Find Your Style</a>
-                    <a href="#" class="hover:text-white">Keranjang</a>
-                    <a href="#" class="hover:text-white">Pesanan</a>
-                </div>
-                {{-- Logo Gambar --}}
-                <div>
-                    <img class="w-32 cursor-pointer" src="{{ asset('assets/images/logo.png') }}" alt="...">
-                </div>
-                {{-- Copyrights --}}
-                <div class="text-sm text-gray-300 border-t border-gray-700 pt-4">
-                    Copyright ©2025 <span class="font-semibold text-white">Magnolia Kebaya dan Batik</span>
-                </div>
+    </section>
+
+    {{-- Section Banner --}}
+    <section class="px-2 py-8 bg-white ">
+        <div class="relative rounded-xl overflow-hidden">
+            <!-- Gambar background -->
+            <img src="{{ asset('assets/images/home-carousel1.png') }}" alt="Magnolia Batik & Kebaya"
+                class="w-full h-64 object-cover">
+
+            <!-- Overlay hitam transparan -->
+            <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4">
+                <h3 class="text-white text-xl mb-1 font-semibold [text-shadow:_2px_2px_0_#000] tracking-wider">Elegan
+                    dalam setiap sentuhan kain tradisi</h3>
+                <p class="text-gray-200 text-sm mb-4 tracking-wide">Tawaran spesial menanti anda!</p>
+
+                <!-- Tombol play -->
+                <button
+                    class="px-6 py-2 border cursor-pointer border-white text-white rounded-full bg-transparent hover:bg-white hover:text-black transition">
+                    Belanja Sekarang
+                </button>
             </div>
-        </footer>
+        </div>
+    </section>
 
-    </div>
-</body>
 
-</html>
+    {{-- Section Rekomendasi --}}
+    <section class="px-2 lg:px-32 bg-gray-50 py-7">
+        <div class="px-2 lg:px-8 py-5 bg-gray-50 rounded-2xl">
+            <h3 class="font-bold text-4xl mb-2 text-center">Rekomendasi Produk</h3>
+            <h5 class="text-md text-gray-500 text-center">Temukan Koleksi Kain Sesuai Seleramu!</h5>
+            <div class="flex justify-center mt-4">
+                <img class="w-1/6 scale-x-250" src="{{ asset('assets/images/section-line.png') }}" alt="">
+            </div>
+            <div class="font-serif grid grid-cols-2 md:grid-cols-3 mt-12 gap-3 justify-start lg:justify-center mb-10">
+
+                <x-card-product></x-card-product>
+                <x-card-product></x-card-product>
+                <x-card-product></x-card-product>
+            </div>
+            <div class="flex justify-center mb-10">
+                <button
+                    class="px-6 tracking-wider py-2 border-2 cursor-pointer border-[#167103] bor text-black rounded font-serif bg-transparent hover:bg-gradient-to-r from-[#25777a] to-[#164345] hover:text-white transition">
+                    Lihat Semua Produk
+                </button>
+            </div>
+
+        </div>
+    </section>
+</x-layouts.user>

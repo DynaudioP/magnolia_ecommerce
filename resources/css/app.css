@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Elsie:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Domine:wght@400..700&family=Elsie:wght@400;900&family=Quintessential&display=swap');
 @import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -9,6 +9,7 @@
 @source "../**/*.vue";
 
 @theme {
-    --font-sans: "Elsie", sans-serif;
-    --font-serif: "Domine", serif; 
+    --font-sans: "Quintessential", sans-serif;
+    --font-serif: "DM Sans", serif;
+    
 }
