@@ -6,7 +6,6 @@
                 Profile</h1>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6">
-                <!-- Left side (form) -->
                 <div class="space-y-6 order-2 md:order-1">
                     <div>
                         <label class="block text-gray-500 text-xs mb-1">USER NAME</label>
@@ -46,7 +45,6 @@
                     </div>
                 </div>
 
-                <!-- Right side (profile image) -->
                 <div class="flex flex-col items-center justify-center order-1 md:order-2">
                     <div class="relative">
                         <img src="{{ asset('assets/images/home-category1.png') }}" alt="Profile"

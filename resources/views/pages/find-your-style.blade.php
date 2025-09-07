@@ -1,20 +1,17 @@
 <x-layouts.user>
 
-
+    {{-- Header Carousel --}}
     <header class="lg:px-10 px-2 bg-gray-50">
 
-        <!-- Breadcrumb -->
         <div>
             <h3 class="py-8 font-serif font-semibold text-gray-500">
                 Home > <span class="text-black"> Find Your Style</span>
             </h3>
         </div>
 
-        <!-- Carousel -->
         <div class="relative w-full h-64 md:h-96 overflow-hidden rounded-4xl shadow-lg" x-data="{ activeSlide: 1, slides: [1, 2, 3], autoplay() { setInterval(() => { this.activeSlide = this.activeSlide === this.slides.length ? 1 : this.activeSlide + 1 }, 3000) } }"
             x-init="autoplay()">
 
-            <!-- Text Overlay -->
             <div class="absolute inset-y-0 left-0 flex items-center z-10 px-8">
                 <div class="text-white max-w-md">
                     <h2 class="text-3xl md:text-5xl font-bold text-[#ddb135] [text-shadow:_2px_2px_0_#000] font-serif">
@@ -27,8 +24,6 @@
                     </button> --}}
                 </div>
             </div>
-
-            <!-- Slides -->
             <template x-for="slide in slides" :key="slide">
                 <div x-show="activeSlide === slide" x-transition.opacity class="absolute inset-0 w-full h-full">
                     <img :src="`{{ asset('assets/images') }}/home-carousel${slide}.png`"

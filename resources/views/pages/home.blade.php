@@ -68,13 +68,11 @@
             <img src="{{ asset('assets/images/home-carousel1.png') }}" alt="Magnolia Batik & Kebaya"
                 class="w-full h-64 object-cover">
 
-            <!-- Overlay hitam transparan -->
             <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4">
                 <h3 class="text-white text-xl mb-1 font-semibold [text-shadow:_2px_2px_0_#000] tracking-wider">Elegan
                     dalam setiap sentuhan kain tradisi</h3>
                 <p class="text-gray-200 text-sm mb-4 tracking-wide">Tawaran spesial menanti anda!</p>
 
-                <!-- Tombol play -->
                 <button
                     class="px-6 py-2 border cursor-pointer border-white text-white rounded-full bg-transparent hover:bg-white hover:text-black transition">
                     Belanja Sekarang
