@@ -10,7 +10,7 @@
                     class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     About Us
                 </a>
-                <a href="#"
+                <a href="/katalog"
                     class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     Katalog
                 </a>
@@ -18,11 +18,11 @@
                     class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     Find Your Style
                 </a>
-                <a href="#"
+                <a href="/keranjang"
                     class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     Keranjang
                 </a>
-                <a href="#"
+                <a href=""
                     class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     Pesanan
                 </a>
@@ -79,7 +79,7 @@
                     class="relative text-lg text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     About Us
                 </a></li>
-            <li><a href="#"
+            <li><a href="/katalog"
                     class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     Katalog
                 </a></li>
@@ -87,7 +87,7 @@
                     class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     Find Your Style
                 </a></li>
-            <li><a href="#"
+            <li><a href="/keranjang"
                     class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     Keranjang
                 </a></li>
