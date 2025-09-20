@@ -12,7 +12,7 @@
             </div>
 
             {{-- Wrap Grid Keranjang --}}
-            <form class="grid grid-cols-1 sm:grid-cols-4 gap-6 ">
+            <form action="/pesanan" class="grid grid-cols-1 sm:grid-cols-4 gap-6 ">
 
                 {{-- Sisi Kiri List-list Keranjang --}}
                 <div class="col-span-3 flex flex-col gap-3">
@@ -47,7 +47,7 @@
                             <span class="text-sky-600">Rp. 150.000,-</span>
                         </div>
                         
-                        <button
+                        <button 
                             class="w-36 ml-auto sm:w-full cursor-pointer bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition">
                             Pesan
                         </button>

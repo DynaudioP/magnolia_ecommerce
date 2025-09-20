@@ -22,7 +22,7 @@
                     class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     Keranjang
                 </a>
-                <a href=""
+                <a href="/pesanan"
                     class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     Pesanan
                 </a>
@@ -56,7 +56,7 @@
         x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
         x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 -translate-y-4" id="menu"
-        class="absolute top-0 left-0 w-full bg-gradient-to-r from-[#25777a] to-[#164345] z-60">
+        class="absolute top-0 left-0 w-full bg-gradient-to-r from-[#25777a] to-[#164345] z-60 block md:hidden">
         <div class="flex items-center px-8 py-5">
             <div class="mx-auto translate-x-3">
                 <a href="/"><img class="w-32 cursor-pointer" src="{{ asset('assets/images/logo.png') }}"
@@ -92,7 +92,7 @@
                     Keranjang
                 </a></li>
             <li>
-                <a href="#"
+                <a href="/pesanan"
                     class="relative text-white pb-1 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full">
                     Pesanan
                 </a>

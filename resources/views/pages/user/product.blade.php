@@ -156,10 +156,116 @@
                 </div>
                 <p class="text-sm text-gray-600 mb-3 self-end hidden md:block">Stok total: <span
                         class="font-medium">2</span></p>
-                <button onclick="window.location.href='/keranjang'"
-                    class="cursor-pointer w-1/2 md:w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
-                    + Keranjang
-                </button>
+                
+                {{-- Button Keranjang --}}
+                <div x-data="{ open: false, step: 1 }" class="relative w-full mx-3">
+                    <!-- Trigger Button -->
+                    <button @click="open = true"
+                        class="cursor-pointer w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
+                        + Keranjang
+                    </button>
+
+                    {{-- <!-- Overlay --> --}}
+                    <div x-show="open"
+                        class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-start sm:items-center justify-center z-50"
+                        x-transition.opacity.duration.300ms @click.self="open = false; step = 1">
+
+                        {{-- <!-- Modal Box --> --}}
+                        <div class="bg-white rounded-xl shadow-lg p-5 w-full max-w-6xl mx-4 my-4 transform transition-all"
+                            x-show="open" x-transition:enter="ease-out duration-300"
+                            x-transition:enter-start="opacity-0 scale-90 translate-y-4"
+                            x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                            x-transition:leave="ease-in duration-200"
+                            x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 scale-90 translate-y-4">
+
+                            {{-- <!-- Progress Bar --> --}}
+                            <div class="flex items-center justify-center mb-6">
+                                <div class="flex-1 h-2 rounded-full mr-2"
+                                    :class="step >= 1 ? 'bg-green-600' : 'bg-gray-300'"></div>
+                                <div class="flex-1 h-2 rounded-full"
+                                    :class="step >= 2 ? 'bg-green-600' : 'bg-gray-300'"></div>
+                            </div>
+
+
+                            {{-- <!-- Form Custom Size --> --}}
+                            <div x-show="step === 1">
+                                <h2 class="text-xl font-bold mb-4">Custom Size</h2>
+                                <p class="text-gray-600 mb-6">Masukkan ukuran sesuai kebutuhanmu:</p>
+
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-[60vh] overflow-y-auto pr-2 py-1">
+                                    <template
+                                        x-for="field in [
+                            'Height','Bust Height','Under Arm','Weight','Front Height','Shoulder Length',
+                            'Body Circumference','Shoulder Width','Back Width','Back Length'
+                        ]"
+                                        :key="field">
+                                        <div class="flex items-center gap-3 px-2">
+                                            <label class="w-32 text-sm font-medium text-gray-700"
+                                                x-text="field"></label>
+                                            <input type="number" placeholder="Isi ukuran (CM)"
+                                                class="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none">
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+
+                            {{-- <!-- Form Custom Design --> --}}
+                            <div x-show="step === 2">
+                                <h2 class="text-xl font-bold mb-4">Custom Design</h2>
+                                <p class="text-gray-600 mb-6">Masukkan design sesuai kebutuhanmu:</p>
+
+                                <div class="grid grid-cols-1 gap-6">
+
+                                    {{-- <!-- Upload File --> --}}
+                                    <div x-data="{ filename: '' }" class="w-full">
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Upload File</label>
+
+                                        <div
+                                            class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+                                            <input type="file" @change="filename = $event.target.files[0]?.name"
+                                                class="hidden" id="fileInput">
+                                            <label for="fileInput"
+                                                class="px-4 py-2 bg-gray-100 cursor-pointer hover:bg-gray-200">Browse</label>
+                                            <span class="px-3 py-2 text-gray-500"
+                                                x-text="filename || 'Belum ada file dipilih (maks 20mb)'"></span>
+                                        </div>
+                                    </div>
+
+                                    {{-- <!-- Deskripsi --> --}}
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Deskripsi</label>
+                                        <textarea rows="4" placeholder="Tulis deskripsi..."
+                                            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none"></textarea>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            {{-- <!-- Tombol Navigasi Form --> --}}
+                            <div class="flex justify-end gap-3 mt-6">
+                                <button @click="open = false; step = 1"
+                                    class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition">
+                                    Batal
+                                </button>
+                                <template x-if="step === 1">
+                                    <button @click="step = 2"
+                                        class="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition">
+                                        Selanjutnya
+                                    </button>
+                                </template>
+                                <template x-if="step === 2">
+                                    <a href="/keranjang"
+                                        class="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition">
+                                        Simpan
+                                    </a>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </aside>
         </section>
 
