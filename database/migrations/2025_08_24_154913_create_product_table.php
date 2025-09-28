@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->foreignId('technique_id')->constrained('technique', 'techniqueId'); // FK ke Technique
             $table->foreignId('material_id')->constrained('material', 'materialId'); // FK ke Material
             $table->double('price');
+            $table->double('stockQuantity');
         });
     }
 

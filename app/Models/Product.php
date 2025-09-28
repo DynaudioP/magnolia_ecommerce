@@ -17,6 +17,7 @@ class Product extends Model
         'technique_id',
         'material_id',
         'price',
+        'stockQuantity'
         
     ];
 

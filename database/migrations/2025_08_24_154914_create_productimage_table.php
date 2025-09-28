@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('productimage', function (Blueprint $table) {
-            $table->id('productImage');
+            $table->id('productImageId');
             $table->binary('prodImage'); // blob gambar
             $table->foreignId('product_id')->constrained('product','productId'); // FK ke 
         });
