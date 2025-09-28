@@ -47,7 +47,9 @@
                 <h1 class="text-2xl font-semibold">Kain Batik Khas Solo</h1>
 
                 <p class="text-2xl text-sky-600 font-bold mt-2">Rp 200.000</p>
-
+                <div class="mt-2 text-gray-600 text-sm">
+                    Ukuran: <span class="font-semibold">S, M, L, XL</span> 
+                </div>
                 <div class="mt-4">
                     <h2 class="font-medium mb-1">Informasi Produk</h2>
 
@@ -156,7 +158,7 @@
                 </div>
                 <p class="text-sm text-gray-600 mb-3 self-end hidden md:block">Stok total: <span
                         class="font-medium">2</span></p>
-                
+
                 {{-- Button Keranjang --}}
                 <div x-data="{ open: false, step: 1 }" class="relative w-full mx-3">
                     <!-- Trigger Button -->
@@ -224,8 +226,9 @@
 
                                         <div
                                             class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
-                                            <input type="file" @change="filename = $event.target.files[0]?.name"
-                                                class="hidden" id="fileInput">
+                                            <input type="file" accept="image/*"
+                                                @change="filename = $event.target.files[0]?.name" class="hidden"
+                                                id="fileInput">
                                             <label for="fileInput"
                                                 class="px-4 py-2 bg-gray-100 cursor-pointer hover:bg-gray-200">Browse</label>
                                             <span class="px-3 py-2 text-gray-500"

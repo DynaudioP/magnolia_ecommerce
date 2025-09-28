@@ -34,8 +34,6 @@ return new class extends Migration {
             $table->double('sleeveLength');
             $table->double('topLength');
             $table->double('skirtLength');
-            $table->timestamps();
-
         });
     }
 

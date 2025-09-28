@@ -12,10 +12,9 @@ return new class extends Migration {
     {
         Schema::create('orderitem', function (Blueprint $table) {
             $table->id('itemId');
-            $table->integer('productId'); // FK tabel product
+            $table->foreignId('product_id')->constrained('product','productId'); // FK ke Product
             $table->integer('quantity');
             $table->double('unitPrice');
-            $table->timestamps();
         });
     }
 

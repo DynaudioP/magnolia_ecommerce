@@ -1,8 +1,6 @@
 <a href="/product">
     <div class="bg-gray-50 rounded-2xl relative cursor-pointer hover:scale-101 transition">
-        <!-- Badge gambar -->
-        <span class="absolute top-3 left-3 bg-teal-500 text-white text-xs px-2 py-1 rounded-md">New
-            Arrival</span>
+        
 
 
         <!-- Gambar Produk -->

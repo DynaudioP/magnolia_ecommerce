@@ -11,14 +11,13 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('product', function (Blueprint $table) {
-            $table->id('productId'); 
-            $table->string('productName', 100); 
-            $table->integer('categoryId'); // FK tabel Category
-            $table->double('fabricSize'); 
-            $table->string('technique', 50); 
-            $table->string('material', 50); 
+            $table->id('productId');
+            $table->string('productName', 100);
+            $table->foreignId('category_id')->constrained('category', 'categoryId'); // FK ke Category
+            $table->double('fabricSize');
+            $table->foreignId('technique_id')->constrained('technique', 'techniqueId'); // FK ke Technique
+            $table->foreignId('material_id')->constrained('material', 'materialId'); // FK ke Material
             $table->double('price');
-            $table->timestamps();
         });
     }
 

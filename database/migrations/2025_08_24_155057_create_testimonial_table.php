@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('testimonial', function (Blueprint $table) {
             $table->id('testimonialId');
-            $table->integer('customerId'); // FK ke Customer Tabel
-            $table->integer('productId'); // FK Ke Product Tabel
-            $table->integer('orderId'); // FK Ke Order Tabel
+            $table->foreignId('customer_id')->constrained('customer','customerId'); // FK ke Customer
+            $table->foreignId('product_id')->constrained('product', 'productId'); // FK ke Product
+            $table->foreignId('order_id')->constrained('order','orderId'); // FK ke Order
             $table->binary('imageUrl'); // blob gambar
             $table->string('description', 200);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

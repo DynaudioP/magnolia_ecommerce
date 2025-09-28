@@ -27,14 +27,23 @@
                 </div>
 
                 <!-- Form -->
-                <form action="" class="flex flex-col gap-5 mt-6">
+                <form action="{{route('user.loginController')}}" method="POST" class="flex flex-col gap-5 mt-6">
+                    @csrf
+                    {{-- Validation Errors --}}
+                        @if ($errors->any()) 
+                            <ul class="bg-red-400 text-white p-2 rounded-xl">
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
                     <div>
                         <p class="text-sm mb-1">Username</p>
                         <input type="text"
                             class="w-full px-3 py-2 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
-                   outline-none transition duration-200"
-                            >
+                   outline-none transition duration-200" name="username" value="{{old('username')}}"
+                            required>
                     </div>
 
                     <div>
@@ -42,16 +51,14 @@
                         <input type="password"
                             class="w-full px-3 py-2 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
-                   outline-none transition duration-200"
-                            >
-                        <div class="text-[#36A4A9] text-end mt-1 text-xs cursor-pointer hover:underline">
-                            Lupa Password?
-                        </div>
+                   outline-none transition duration-200" name="password"
+                            required>
+                        
                     </div>
 
-                    <a href="/"><button
+                    <button type="submit"
                         class="cursor-pointer hover:scale-[1.01] px-5 py-2 rounded-lg font-semibold hover:text-[#36A4A9] hover:bg-white border-2 border-[#36A4A9] transition text-white bg-gradient-to-r bg-[#36A4A9] focus:outline-none focus:ring-4 focus:ring-[#36A4A944]">
-                        Masuk </button></a>
+                        Masuk </button>
                 </form>
             </div>
         </div>

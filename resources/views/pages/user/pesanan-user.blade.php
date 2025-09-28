@@ -64,11 +64,7 @@
                                     class="w-full h-11 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none"
                                     placeholder="Masukkan alamat lengkap...">Sepanjang jalan kenangan</textarea>
 
-                                <div class="flex justify-end">
-                                    <button class="bg-green-600 text-white py-2 px-4 rounded">
-                                        Ganti
-                                    </button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

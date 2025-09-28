@@ -20,21 +20,27 @@
             <div class="bg-white rounded-xl border border-gray-200 px-6 lg:px-12 py-13 w-full max-w-md shadow">
                 <div>
                     <h4 class="text-xl font-bold">PENDAFTARAN</h4>
-                    <h6 class="text-xs text-gray-400">
-                        Daftar untuk dapat membeli produk
-                        <span class="text-[#36A4A9] font-medium hover:underline">Magnolia</span>
-                    </h6>
+
                 </div>
 
                 <!-- Form -->
-                <form action="" class="flex flex-col gap-5 mt-6">
+                <form action="{{ route('register') }}" method="POST" class="flex flex-col gap-5 mt-6">
+                    @csrf
+                    {{-- Validation Errors --}}
+                    @if ($errors->any()) 
+                            <ul class="bg-red-400 text-white p-2 rounded-xl">
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
                     <div>
                         <p class="text-sm mb-1">Username</p>
                         <input type="text"
                             class="w-full px-3 py-1 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
                    outline-none transition duration-200"
-                            >
+                            name="username" required>
                     </div>
 
                     <div>
@@ -43,7 +49,7 @@
                             class="w-full px-3 py-1 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
                    outline-none transition duration-200"
-                            >
+                            name="password" required>
                     </div>
 
                     <div>
@@ -52,7 +58,7 @@
                             class="w-full px-3 py-1 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
                    outline-none transition duration-200"
-                            >
+                            required name="email">
                     </div>
 
                     <div>
@@ -61,7 +67,7 @@
                             class="w-full px-3 py-1 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
                    outline-none transition duration-200"
-                            >
+                            required name="phone">
                     </div>
 
                     <div>
@@ -70,12 +76,13 @@
                             class="w-full px-3 py-1 rounded-lg border border-gray-300 
                    focus:border-[#36A4A9] focus:ring-2 focus:ring-[#36A4A944] 
                    outline-none transition duration-200"
-                            >
+                            required name="address">
                     </div>
 
-                    <a href="/"><button
-                            class="cursor-pointer hover:scale-[1.01] px-5 py-2 rounded-lg font-semibold hover:text-[#36A4A9] hover:bg-white border-2 border-[#36A4A9] transition text-white bg-gradient-to-r bg-[#36A4A9] focus:outline-none focus:ring-4 focus:ring-[#36A4A944]">
-                            Masuk </button></a>
+                    <button type="submit"
+                        class="cursor-pointer hover:scale-[1.01] px-5 py-2 rounded-lg font-semibold hover:text-[#36A4A9] hover:bg-white border-2 border-[#36A4A9] transition text-white bg-gradient-to-r bg-[#36A4A9] focus:outline-none focus:ring-4 focus:ring-[#36A4A944]">
+                        Masuk </button>
+
                 </form>
             </div>
         </div>

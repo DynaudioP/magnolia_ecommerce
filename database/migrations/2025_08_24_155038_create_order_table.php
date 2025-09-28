@@ -12,20 +12,21 @@ return new class extends Migration {
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id('orderId'); // Primary Key
-            $table->integer('customerId');   // FK ke customers
-            $table->integer('itemId');       // FK ke items
-            $table->integer('designId');     // FK ke designs
-            $table->integer('measurementId'); // FK ke measurements
+            $table->foreignId('customer_id')->constrained('customer', 'customerId'); // FK ke Customer
+            $table->foreignId('item_id')->constrained('orderitem', 'itemId'); // FK ke Orderitems
+            $table->foreignId('design_id')->constrained('customdesign', 'designId'); // FK ke Customdesign
+            $table->foreignId('measurement_id')->constrained('measurement', 'measurementId'); // FK ke measurements
             $table->date('orderDate');
             $table->string('status', 20);
-            $table->string('modelType', 20);
-            $table->string('liningOption', 100);
-            $table->string('accessories', 100);
-            $table->string('accessoryLevel', 100);
+            $table->foreignId('modelType_id')->constrained('modeltype', 'modelTypeId'); // FK ke ModelType
+            $table->foreignId('liningOption_id')->constrained('liningoption', 'liningOptionId'); // FK ke LiningOption
+            $table->foreignId('accessories_id')->constrained('accessories', 'accessoriesId'); // FK ke Accessories
+            $table->foreignId('status_id')->constrained('status','statusId'); // FK ke Status
             $table->double('totalItem');
             $table->double('totalPrice');
             $table->date('estimatedDate');
-            $table->timestamps();
+            $table->foreignId('shippingMethod_id')->constrained('shippingmethod','shippingMethodId'); // FK ke ShippingMethod
+            
         });
     }
 

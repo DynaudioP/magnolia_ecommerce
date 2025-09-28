@@ -11,7 +11,7 @@
                 </h1>
                 <p class="text-gray-200 text-lg mb-7">Koleksi pakaian nyaman dan stylish, cocok untuk aktivitas
                     apapun.</p>
-                <button
+                <button onclick="window.location.href='/katalog'"
                     class="px-6 py-2 hover:scale-103 cursor-pointer transition rounded-lg font-semibold text-white 
   bg-gradient-to-r from-[#f9d423] via-[#f6ae2d] to-[#d4af37] shadow-md">
                     Belanja Sekarang
@@ -73,7 +73,7 @@
                     dalam setiap sentuhan kain tradisi</h3>
                 <p class="text-gray-200 text-sm mb-4 tracking-wide">Tawaran spesial menanti anda!</p>
 
-                <button
+                <button onclick="window.location.href='/katalog'"
                     class="px-6 py-2 border cursor-pointer border-white text-white rounded-full bg-transparent hover:bg-white hover:text-black transition">
                     Belanja Sekarang
                 </button>
