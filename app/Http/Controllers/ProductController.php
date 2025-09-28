@@ -12,10 +12,10 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
             'productName' => 'required|string|max:100',
-            'category_id' => 'required|integer|exists:categories,id', // pastikan ada di table categories
+            'category_id' => 'required|integer|exists:categories,id', 
             'fabricSize' => 'required|numeric',
-            'technique_id' => 'required|integer|exists:techniques,id', // pastikan ada
-            'material_id' => 'required|integer|exists:materials,id', // pastikan ada
+            'technique_id' => 'required|integer|exists:techniques,id',
+            'material_id' => 'required|integer|exists:materials,id', 
             'price' => 'required|numeric',
             'stockQuantity' => 'required|numeric',
         ]);
