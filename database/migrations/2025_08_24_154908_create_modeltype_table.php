@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('modelTypeId');
             $table->string('typeName', 20);
             $table->double('typePrice');
-            $table->date('estimatedDays');
+            $table->integer('estimatedDays');
         });
     }
 

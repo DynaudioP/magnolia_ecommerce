@@ -10,7 +10,7 @@ class ModelType extends Model
     protected $primaryKey = 'modelTypeId';
     public $timestamps = false;
 
-    protected $fillable = ['typeName', 'typePrice'];
+    protected $fillable = ['typeName', 'typePrice', 'estimatedDays'];
 
     // Relasi
     public function orders()
