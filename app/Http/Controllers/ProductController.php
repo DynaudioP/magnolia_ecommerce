@@ -32,6 +32,8 @@ class ProductController extends Controller
             'stockQuantity' => $validated['stockQuantity'],
         ]);
 
+
+        // Return Kembali ke Dashboard
         return redirect()->back()->with('success', 'Product berhasil ditambahkan!');
 
     }

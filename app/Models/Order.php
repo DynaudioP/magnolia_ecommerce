@@ -47,7 +47,7 @@ class Order extends Model
     }
     public function shippingMethod()
     {
-        return $this->belongsTo(ShippingMethod::class, 'shippingMethod_id', 'shippingMethodId');
+        return $this->belongsTo(ShippingMethode::class, 'shippingMethod_id', 'shippingMethodId');
     }
     public function payment()
     {
