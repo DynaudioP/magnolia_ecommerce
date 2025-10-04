@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('testimonial', function (Blueprint $table) {
             $table->id('testimonialId');
-            $table->foreignId('customer_id')->constrained('customer','customerId'); // FK ke Customer
-            $table->foreignId('product_id')->constrained('product', 'productId'); // FK ke Product
-            $table->foreignId('order_id')->constrained('order','orderId'); // FK ke Order
-            $table->binary('imageUrl'); // blob gambar
+            $table->foreignId('customer_id')->constrained('customer','customerId')->cascadeOnDelete(); // FK ke Customer
+            $table->foreignId('product_id')->constrained('product', 'productId')->cascadeOnDelete(); // FK ke Product
+            $table->foreignId('order_id')->constrained('order','orderId')->cascadeOnDelete(); // FK ke Order
+            $table->string('imageUrl'); // URL Gambar
             $table->string('description', 200);
             $table->timestamp('created_at')->useCurrent();
         });

@@ -12,10 +12,7 @@ return new class extends Migration {
     {
         Schema::create('customdesign', function (Blueprint $table) {
             $table->id('designId');
-            $table->foreignId('referenceImage_id')
-                ->constrained('referenceimage', 'referenceImageId')
-                ->unique()
-                ->onDelete('cascade');
+            $table->foreignId('item_id')->constrained('orderitem','itemId')->cascadeOnDelete(); // FK ke Order Tabel
             $table->string('description', 200);
         });
     }

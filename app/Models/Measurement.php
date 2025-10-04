@@ -10,9 +10,12 @@ class Measurement extends Model
     protected $primaryKey = 'measurementId';
     public $timestamps = false;
 
-    protected $guarded = []; 
+    protected $guarded = [];
 
-    
+
     // Relasi
-    public function orders() { return $this->hasMany(Order::class, 'measurement_id', 'measurementId'); }
+    public function orderItem()
+    {
+        return $this->belongsTo(OrderItem::class, 'item_id', 'itemId');
+    }
 }

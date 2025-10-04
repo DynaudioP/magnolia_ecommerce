@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('productimage', function (Blueprint $table) {
             $table->id('productImageId');
-            $table->binary('prodImage'); // blob gambar
-            $table->foreignId('product_id')->constrained('product','productId'); // FK ke 
+            $table->string('prodImage'); // URL gambar
+            $table->foreignId('product_id')->constrained('product','productId')->cascadeOnDelete(); ; // FK ke Product
         });
     }
 

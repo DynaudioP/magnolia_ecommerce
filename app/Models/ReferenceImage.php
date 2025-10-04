@@ -14,6 +14,6 @@ class ReferenceImage extends Model
     // Relasi
     public function customDesign()
     {
-        return $this->hasOne(CustomDesign::class, 'referenceImage_id', 'id');
+        return $this->belongsTo(CustomDesign::class, 'design_id', 'designId');
     }
 }

@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('measurement', function (Blueprint $table) {
             // Primary Key custom
             $table->id('measurementId'); 
+            $table->foreignId('item_id')->constrained('orderitem','itemId')->cascadeOnDelete(); // FK ke Order Tabel
             $table->double('height');
             $table->double('weight');
             $table->double('shoulderLength');

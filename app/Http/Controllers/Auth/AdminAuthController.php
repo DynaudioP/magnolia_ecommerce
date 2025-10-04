@@ -26,7 +26,7 @@ class AdminAuthController extends Controller
             $request->session()->regenerate();
 
             // 4️⃣ Redirect ke dashboard admin
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.dashboard')->with('success', 'Login berhasil, selamat datang!');
         }
 
         return back()->withErrors([
@@ -40,6 +40,6 @@ class AdminAuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('admin.login')->with('success', 'Login berhasil, selamat datang!');
+        return redirect()->route('admin.login');
     }
 }

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Material;
+use App\Models\Product;
+use App\Models\Technique;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -9,7 +13,9 @@ class AdminController extends Controller
     // Dashboard
     public function dashboard()
     {
-        return view('pages.admin.dashboard');
+        $products = Product::paginate(10);
+
+        return view('pages.admin.dashboard', compact('products'));
     }
 
     // Orders
@@ -21,12 +27,22 @@ class AdminController extends Controller
     // Create produk
     public function createProduct()
     {
-        return view('pages.admin.create-produk');
+        $categories = Category::all();
+        $techniques = Technique::all();
+        $materials = Material::all();
+
+        return view('pages.admin.create-produk', compact('categories', 'techniques', 'materials'));
     }
 
-    // Update produk
-    public function updateProduct()
+    // Update produk 
+    public function updateProduct($id)
     {
-        return view('pages.admin.update-produk');
+        $categories = Category::all();
+        $techniques = Technique::all();
+        $materials = Material::all();
+
+        $product = Product::with('images')->findOrFail($id);
+
+        return view('pages.admin.update-produk',compact('categories', 'techniques', 'materials', 'product'),);
     }
 }

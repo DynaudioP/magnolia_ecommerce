@@ -12,11 +12,11 @@ return new class extends Migration {
     {
         Schema::create('payment', function (Blueprint $table) {
             $table->id('paymentId');
-            $table->foreignId('order_id')->constrained('order', 'orderId'); // FK ke Order
+            $table->foreignId('order_id')->constrained('order', 'orderId')->cascadeOnDelete(); // FK ke Order
             $table->double('amount');
             $table->date('paymentDate');
             $table->string('method', 20);
-            $table->binary('receiptImage'); // blob Gambar
+            $table->string('receiptImage'); // URL Gambar
         });
     }
 

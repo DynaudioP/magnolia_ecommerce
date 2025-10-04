@@ -79,7 +79,7 @@
     {{-- <div class="flex items-center bg-gray-100 min-h-screen">
         <div class="flex flex-col justify-center items-center w-1/2">
             <h1 class="text-center text-2xl">Welcome to Magnolia <br> Kebaya and Batik</h1>
-            <div class="bg-white rounded-md flex flex-col rounded-lg border border-gray-200 px-8 py-12 gap-2">
+            <div class="bg-white flex flex-col rounded-lg border border-gray-200 px-8 py-12 gap-2">
                 <div>
                     <h4 class="text-xl font-bold">LOGIN</h4>
                     <h6 class="text-sm">Tidak memiliki akun? <span>Daftar</span></h6>

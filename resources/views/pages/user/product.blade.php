@@ -21,7 +21,7 @@
         </header>
         <section class="font-serif max-w-7xl mx-auto px-6 py-9 grid grid-cols-1 md:grid-cols-[2fr_3fr_1.5fr] gap-6">
             {{-- Gambar Produk --}}
-            <div x-data="{ image: '{{ asset('assets/images/home-carousel1.png') }}' }">
+            <div x-data="{ image: '{{ asset($product->images->first()->prodImage) }}' }">
                 {{-- Gambar utama --}}
                 <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
                     <img :src="image" alt="Produk"
@@ -30,7 +30,11 @@
 
                 {{-- Thumbnail sejajar --}}
                 <div class="grid grid-cols-3 gap-5 mt-4 justify-items-center">
-                    <img src="{{ asset('assets/images/home-carousel2.png') }}"
+                    @foreach ($product->images as $image)
+                        <img src="{{ asset($image->prodImage) }}" @click="image = '{{ asset($image->prodImage) }}'"
+                            class="h-14 w-full sm:h-20 sm:w-full rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-teal-500 transition">
+                    @endforeach
+                    {{-- <img src="{{ asset('assets/images/home-carousel2.png') }}"
                         @click="image = '{{ asset('assets/images/home-carousel2.png') }}'"
                         class="h-14 w-full sm:h-20 sm:w-full rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-teal-500 transition">
                     <img src="{{ asset('assets/images/home-carousel3.png') }}"
@@ -38,17 +42,35 @@
                         class="h-14 w-full sm:h-20 sm:w-full rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-teal-500 transition">
                     <img src="{{ asset('assets/images/home-carousel1.png') }}"
                         @click="image = '{{ asset('assets/images/home-carousel1.png') }}'"
-                        class="h-14 w-full sm:h-20 sm:w-full rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-teal-500 transition">
+                        class="h-14 w-full sm:h-20 sm:w-full rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-teal-500 transition"> --}}
                 </div>
             </div>
             {{-- Detail Produk --}}
-            <div>
-                <h3 class="text-sm  text-gray-400">Batik</h3>
-                <h1 class="text-2xl font-semibold">Kain Batik Khas Solo</h1>
+            <div x-data="{ price: {{ $product->price }}, model: '',
+                    lining: '',
+                    accessory: '',
+                    accessoryLevel: '',
+                    prices: {
+                        model: {
+                            blouse: 200000,
+                            dress: 300000,
+                            rok: 250000,
+                            set: 450000,
+                        },
+                        accessoryLevel: {
+                            minimal: 100000,
+                            medium: 300000,
+                            full: 500000,
+                        }
+                    },}">
+                <h3 class="text-sm  text-gray-400">{{ $product->category->categoryName }}</h3>
+                <h1 class="text-2xl font-semibold">{{ $product->productName }}</h1>
 
-                <p class="text-2xl text-sky-600 font-bold mt-2">Rp 200.000</p>
+                <p x-text="`Rp. ${price.toLocaleString('id-ID')} ,-`" class="text-2xl text-sky-600 font-bold mt-2">
+                </p>
+                <span x-text="model"></span>
                 <div class="mt-2 text-gray-600 text-sm">
-                    Ukuran: <span class="font-semibold">S, M, L, XL</span> 
+                    Ukuran: <span class="font-semibold">{{ $product->fabricSize }}</span>
                 </div>
                 <div class="mt-4">
                     <h2 class="font-medium mb-1">Informasi Produk</h2>
@@ -77,35 +99,16 @@
                 </div>
 
                 {{-- Bagian Select Opsi --}}
-                <div x-data="{
-                    model: '',
-                    lining: '',
-                    accessory: '',
-                    accessoryLevel: '',
-                    prices: {
-                        model: {
-                            blouse: 200000,
-                            dress: 300000,
-                            rok: 250000,
-                            set: 450000,
-                        },
-                        accessoryLevel: {
-                            minimal: 100000,
-                            medium: 300000,
-                            full: 500000,
-                        }
-                    },
-                
-                }" class="mt-4 space-y-1">
+                <div class="mt-4 space-y-1">
                     {{-- Pilih Model --}}
                     <div>
                         <label class="font-medium block mb-1">Tipe Model</label>
                         <select x-model="model" class="w-full border rounded-lg p-1">
                             <option value="">-- Pilih Model --</option>
-                            <option value="blouse">Blouse - Rp 200.000</option>
-                            <option value="dress">Dress - Rp 300.000</option>
-                            <option value="rok">Rok - Rp 250.000</option>
-                            <option value="set">Set (Blouse + Rok) - Rp 450.000</option>
+                            @foreach ($modelType as $model)
+                                <option value="{{ $model->modelTypeId }}">{{ $model->typeName }} - Rp.
+                                    {{ number_format($model->typePrice, 0, ',', '.') }},-</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -114,9 +117,13 @@
                         <label class="font-medium block mb-1">Lining Option</label>
                         <select x-model="lining" class="w-full border rounded-lg p-1">
                             <option value="">-- Pilih Lining --</option>
-                            <option value="furing-lepas">Furing Lepas</option>
-                            <option value="furing-pres">Furing Pres</option>
-                            <option value="tanpa-furing">Tanpa Furing</option>
+                            @foreach ($liningOption as $lining)
+                                <option value="{{ $lining->liningOptionId }}">{{ $lining->optionName }} @if ($lining->optionPrice > 0)
+                                        - Rp. {{ number_format($lining->optionPrice, 0, ',', '.') }},-
+                                    @endif
+                                </option>
+                            @endforeach
+
                         </select>
                     </div>
 
@@ -125,23 +132,13 @@
                         <label class="font-medium block mb-1">Accessories</label>
                         <select x-model="accessory" class="w-full border rounded-lg p-1">
                             <option value="">-- Pilih Aksesoris --</option>
-                            <option value="payet">Payet</option>
-                            <option value="mote">Mote</option>
+                            @foreach ($accessories as $accessory)
+                                <option value="{{ $accessory->accessoriesId }}">{{ $accessory->accessoriesName }} -
+                                    Rp.
+                                    {{ number_format($accessory->accessoriesPrice, 0, ',', '.') }},-</option>
+                            @endforeach
                         </select>
                     </div>
-
-                    {{-- Pilih Level Aksesoris --}}
-                    <div>
-                        <label class="font-medium block mb-1">Accessory Level</label>
-                        <select x-model="accessoryLevel" class="w-full border rounded-lg p-1">
-                            <option value="">-- Pilih Level --</option>
-                            <option value="minimal">Minimal - Rp 100.000</option>
-                            <option value="medium">Medium - Rp 300.000</option>
-                            <option value="full">Full - Rp 500.000</option>
-                        </select>
-                    </div>
-
-
                 </div>
             </div>
 
@@ -161,11 +158,19 @@
 
                 {{-- Button Keranjang --}}
                 <div x-data="{ open: false, step: 1 }" class="relative w-full mx-3">
-                    <!-- Trigger Button -->
-                    <button @click="open = true"
-                        class="cursor-pointer w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
-                        + Keranjang
-                    </button>
+                    @auth
+                        <!-- User sudah login / Trigger Button Keranjang -->
+                        <button @click="open = true"
+                            class="cursor-pointer w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
+                            + Keranjang
+                        </button>
+                    @else
+                        <!-- User belum login -->
+                        <a href="{{ route('user.login') }}"
+                            class="cursor-pointer w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition block text-center">
+                            + Keranjang
+                        </a>
+                    @endauth
 
                     {{-- <!-- Overlay --> --}}
                     <div x-show="open"
@@ -173,7 +178,8 @@
                         x-transition.opacity.duration.300ms @click.self="open = false; step = 1">
 
                         {{-- <!-- Modal Box --> --}}
-                        <div class="bg-white rounded-xl shadow-lg p-5 w-full max-w-6xl mx-4 my-4 transform transition-all"
+                        <div x-cloak
+                            class="bg-white rounded-xl shadow-lg p-5 w-full max-w-6xl mx-4 my-4 transform transition-all"
                             x-show="open" x-transition:enter="ease-out duration-300"
                             x-transition:enter-start="opacity-0 scale-90 translate-y-4"
                             x-transition:enter-end="opacity-100 scale-100 translate-y-0"

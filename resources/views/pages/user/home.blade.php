@@ -90,14 +90,18 @@
             <div class="flex justify-center mt-4">
                 <img class="w-1/6 scale-x-250" src="{{ asset('assets/images/section-line.png') }}" alt="">
             </div>
-            <div class="font-serif grid grid-cols-2 md:grid-cols-3 mt-12 gap-3 justify-start lg:justify-center mb-10">
+            <div class="font-serif grid grid-cols-2 md:grid-cols-3 mt-12 gap-4 justify-start lg:justify-center mb-10">
 
-                <x-card-product></x-card-product>
-                <x-card-product></x-card-product>
-                <x-card-product></x-card-product>
+                @foreach ($products->take(3) as $product)
+                    <x-card-product prodImage="{{ $product->images->first()->prodImage }}"
+                        productName="{{ $product->productName }}" productId="{{ $product->productId }}"
+                        category="{{ $product->category->categoryName }}" price="{{ $product->price }}"
+                        stockQuantity="{{ $product->stockQuantity }}" />
+                @endforeach
+
             </div>
             <div class="flex justify-center mb-10">
-                <button
+                <button onclick="window.location.href='/katalog'"
                     class="px-6 tracking-wider py-2 border-2 cursor-pointer border-[#167103] bor text-black rounded font-serif bg-transparent hover:bg-gradient-to-r from-[#25777a] to-[#164345] hover:text-white transition">
                     Lihat Semua Produk
                 </button>

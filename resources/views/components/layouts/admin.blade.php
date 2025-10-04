@@ -14,7 +14,7 @@
 
 <body>
     {{-- Wrap Halaman --}}
-    <x-popup/>
+    
     <div class="bg-gradient-to-r from-[#25777a] to-[#164345] min-h-screen grid grid-rows-[auto_1fr_auto] z-50"
         x-data="{ open: false }">
 
@@ -54,6 +54,7 @@
 
         {{-- Footer Admin --}}
         <x-footer-admin />
+    <x-popup/>
     </div>
     
 </body>

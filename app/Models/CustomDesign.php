@@ -15,10 +15,10 @@ class CustomDesign extends Model
     // Relasi
     public function referenceImage()
     {
-        return $this->belongsTo(ReferenceImage::class, 'referenceImage_id', 'referenceImageId');
+        return $this->hasOne(ReferenceImage::class, 'design_id', 'designId');
     }
-    public function orders()
+    public function orderItem()
     {
-        return $this->hasMany(Order::class, 'design_id', 'designId');
+        return $this->belongsTo(OrderItem::class, 'item_id', 'itemId');
     }
 }
