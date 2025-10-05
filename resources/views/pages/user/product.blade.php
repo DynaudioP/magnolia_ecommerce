@@ -1,68 +1,64 @@
 <x-layouts.user>
     <div class="min-h-[70vh] bg-gray-50">
+        
 
-        {{-- Header Search Barang --}}
-        <header class="bg-gradient-to-r from-[#25777a] to-[#164345] p-6 flex justify-center">
-            <div
-                class="flex items-center bg-white rounded-lg shadow-md overflow-hidden w-full max-w-lg focus-within:ring-2 focus-within:ring-teal-500 transition duration-200">
-                {{-- Icon Search --}}
-                <span class="pl-3 text-gray-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8" />
-                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    </svg>
 
-                </span>
-                {{-- Input --}}
-                <input type="text" placeholder="Cari di Magnolia"
-                    class="w-full px-3 py-2.5 text-gray-700 focus:outline-none" />
-            </div>
-        </header>
         <section class="font-serif max-w-7xl mx-auto px-6 py-9 grid grid-cols-1 md:grid-cols-[2fr_3fr_1.5fr] gap-6">
-            {{-- Gambar Produk --}}
-            <div x-data="{ image: '{{ asset($product->images->first()->prodImage) }}' }">
+            <div x-data="{
+                images: [
+                    @foreach ($product->images as $img)
+                '{{ asset($img->prodImage) }}', @endforeach
+                ],
+                mainImageIndex: 0,
+                swapImage(index) {
+                    // Tukar posisi
+                    const temp = this.images[this.mainImageIndex];
+                    this.images[this.mainImageIndex] = this.images[index];
+                    this.images[index] = temp;
+                    // Setelah tukar, reset index utama ke 0 agar thumbnail selalu update
+                    this.mainImageIndex = 0;
+                },
+                get thumbnails() {
+                    // Ambil 3 gambar setelah yang utama
+                    return this.images.slice(1, 4);
+                }
+            }">
                 {{-- Gambar utama --}}
                 <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
-                    <img :src="image" alt="Produk"
-                        class="w-full h-full object-cover transition duration-500">
+                    <img :src="images[mainImageIndex]" alt="Produk"
+                        class="w-full h-full object-cover transition duration-300 ease-in-out transform">
                 </div>
 
-                {{-- Thumbnail sejajar --}}
+                {{-- Thumbnail (3 gambar kecil di bawah) --}}
                 <div class="grid grid-cols-3 gap-5 mt-4 justify-items-center">
-                    @foreach ($product->images as $image)
-                        <img src="{{ asset($image->prodImage) }}" @click="image = '{{ asset($image->prodImage) }}'"
+                    <template x-for="(thumb, i) in thumbnails" :key="thumb">
+                        <img :src="thumb" @click="swapImage(i + 1)"
                             class="h-14 w-full sm:h-20 sm:w-full rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-teal-500 transition">
-                    @endforeach
-                    {{-- <img src="{{ asset('assets/images/home-carousel2.png') }}"
-                        @click="image = '{{ asset('assets/images/home-carousel2.png') }}'"
-                        class="h-14 w-full sm:h-20 sm:w-full rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-teal-500 transition">
-                    <img src="{{ asset('assets/images/home-carousel3.png') }}"
-                        @click="image = '{{ asset('assets/images/home-carousel3.png') }}'"
-                        class="h-14 w-full sm:h-20 sm:w-full rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-teal-500 transition">
-                    <img src="{{ asset('assets/images/home-carousel1.png') }}"
-                        @click="image = '{{ asset('assets/images/home-carousel1.png') }}'"
-                        class="h-14 w-full sm:h-20 sm:w-full rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-teal-500 transition"> --}}
+                    </template>
                 </div>
             </div>
+
             {{-- Detail Produk --}}
-            <div x-data="{ price: {{ $product->price }}, model: '',
-                    lining: '',
-                    accessory: '',
-                    accessoryLevel: '',
-                    prices: {
-                        model: {
-                            blouse: 200000,
-                            dress: 300000,
-                            rok: 250000,
-                            set: 450000,
-                        },
-                        accessoryLevel: {
-                            minimal: 100000,
-                            medium: 300000,
-                            full: 500000,
-                        }
-                    },}">
+            <div x-data="{
+                price: {{ $product->price }},
+                model: '',
+                lining: '',
+                accessory: '',
+                accessoryLevel: '',
+                prices: {
+                    model: {
+                        blouse: 200000,
+                        dress: 300000,
+                        rok: 250000,
+                        set: 450000,
+                    },
+                    accessoryLevel: {
+                        minimal: 100000,
+                        medium: 300000,
+                        full: 500000,
+                    }
+                },
+            }">
                 <h3 class="text-sm  text-gray-400">{{ $product->category->categoryName }}</h3>
                 <h1 class="text-2xl font-semibold">{{ $product->productName }}</h1>
 
@@ -158,19 +154,20 @@
 
                 {{-- Button Keranjang --}}
                 <div x-data="{ open: false, step: 1 }" class="relative w-full mx-3">
-                    @auth
+                    @auth('customer')
                         <!-- User sudah login / Trigger Button Keranjang -->
-                        <button @click="open = true"
+                        <button @click="open = true" type="button"
                             class="cursor-pointer w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
                             + Keranjang
                         </button>
-                    @else
+                    @endauth
+                    @guest('customer')
                         <!-- User belum login -->
                         <a href="{{ route('user.login') }}"
                             class="cursor-pointer w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition block text-center">
                             + Keranjang
                         </a>
-                    @endauth
+                    @endguest
 
                     {{-- <!-- Overlay --> --}}
                     <div x-show="open"

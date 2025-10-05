@@ -33,7 +33,7 @@
 
         <div class="grid-wrap px-2 lg:px-32 mt-20">
             <div class="px-2 lg:px-8 grid grid-cols-1 sm:grid-cols-2 mx-auto gap-20 sm:gap-6 ">
-                <div class="bg-[#e6eef0] rounded-lg flex justify-between hover:scale-102 transition cursor-pointer">
+                <a href="/katalog?search=&categories%5B%5D=1" class="bg-[#e6eef0] rounded-lg flex justify-between hover:scale-102 transition cursor-pointer">
                     <div class="px-4 sm:px-10 py-4 sm:py-8">
                         <h3 class="font-bold text-2xl mb-1">Batik</h3>
                         <h5 class="font-serif">Lihat Produk ></h5>
@@ -42,9 +42,9 @@
                         <img src="{{ asset('assets/images/home-category1.png') }}" alt="Product"
                             class="w-auto h-[115%] object-cover -mt-11 sm:-mt-13">
                     </div>
-                </div>
+                </a>
 
-                <div
+                <a href="/katalog?search=&categories%5B%5D=2"
                     class="bg-[#f0f1eb] rounded-lg flex flex-row-reverse sm:flex-row justify-between hover:scale-102 transition cursor-pointer">
                     <div class="px-4 sm:px-10 py-4 sm:py-8">
                         <h3 class="font-bold text-2xl mb-1">Kebaya</h3>
@@ -54,7 +54,7 @@
                         <img src="{{ asset('assets/images/home-category2.png') }}" alt="Product"
                             class="w-auto h-[115%] object-cover -mt-11 sm:-mt-13">
                     </div>
-                </div>
+                </a>
 
             </div>
         </div>

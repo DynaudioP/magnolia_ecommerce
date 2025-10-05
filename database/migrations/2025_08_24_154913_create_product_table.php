@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id('productId');
             $table->string('productName', 100);
             $table->foreignId('category_id')->constrained('category', 'categoryId'); // FK ke Category
-            $table->double('fabricSize');
+            $table->string('fabricSize', 20);
             $table->foreignId('technique_id')->constrained('technique', 'techniqueId'); // FK ke Technique
             $table->foreignId('material_id')->constrained('material', 'materialId'); // FK ke Material
             $table->double('price');

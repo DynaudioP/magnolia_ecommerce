@@ -16,7 +16,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'productName' => 'required|string|max:100',
             'category_id' => 'required|integer|exists:category,categoryId',
-            'fabricSize' => 'required|numeric',
+            'fabricSize' => 'required|string|max:20',
             'technique_id' => 'required|integer|exists:technique,techniqueId',
             'material_id' => 'required|integer|exists:material,materialId',
             'price' => 'required|numeric',
@@ -61,7 +61,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'productName' => 'required|string|max:100',
             'category_id' => 'required|exists:category,categoryId',
-            'fabricSize' => 'required|numeric',
+            'fabricSize' => 'required|string|max:20',
             'technique_id' => 'required|exists:technique,techniqueId',
             'material_id' => 'required|exists:material,materialId',
             'price' => 'required|numeric',

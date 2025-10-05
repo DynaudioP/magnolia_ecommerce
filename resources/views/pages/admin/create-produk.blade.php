@@ -206,9 +206,10 @@
         previewFile(event) {
             const input = event.target;
             if (input.files) {
-                if (this.files.length + input.files.length > 3) {
-                    alert("Maksimal hanya 3 gambar.");
+                if (this.files.length + input.files.length > 4) {
+                    alert("Maksimal hanya 4 gambar.");
                     input.value = ""; 
+                    input.files = this.dt.files;
                     return;
                 }
 
