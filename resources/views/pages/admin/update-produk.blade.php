@@ -227,52 +227,6 @@
 
     // function uploadBukti(oldImages = []) {
     //     return {
-    //         files: [], // preview untuk gambar baru
-    //         dt: new DataTransfer(), // akumulasi file baru biar bisa batch
-    //         oldImages: oldImages.map(img => ({
-    //             ...img,
-    //             deleted: false
-    //         })), // gambar lama
-
-    //         previewFile(event) {
-    //             const input = event.target;
-    //             if (input.files) {
-    //                 let total = this.oldImages.filter(i => !i.deleted).length +
-    //                     this.files.length +
-    //                     input.files.length;
-    //                 if (total > 4) {
-    //                     alert("Maksimal hanya 4 gambar (gabungan lama + baru).");
-    //                     input.value = "";
-    //                     return;
-    //                 }
-
-    //                 Array.from(input.files).forEach(file => {
-    //                     this.files.push({
-    //                         url: URL.createObjectURL(file)
-    //                     });
-    //                     this.dt.items.add(file); // masukkan ke DataTransfer
-    //                 });
-
-    //                 // reset input lalu isi ulang dengan semua file yang sudah terkumpul
-    //                 input.files = this.dt.files;
-    //             }
-    //         },
-
-    //         removeFile(index) {
-    //             this.files.splice(index, 1);
-    //             this.dt.items.remove(index);
-    //             document.querySelector('input[type=file]').files = this.dt.files;
-    //         },
-
-    //         removeOld(index) {
-    //             this.oldImages[index].deleted = true;
-    //             // jangan splice biar input hidden "deleted_images[]" tetap terkirim
-    //         }
-    //     }
-    // }
-
-    // function uploadBukti(oldImages = []) {
-    //     return {
     //         files: [], // gambar baru
     //         oldImages: oldImages.map(img => ({
     //             ...img,
